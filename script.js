@@ -1,1 +1,1 @@
-added scroll fade-in animations for sections
+current script.js with scroll animations
