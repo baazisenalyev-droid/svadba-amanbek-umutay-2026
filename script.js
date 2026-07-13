@@ -1,1 +1,1 @@
-the updated script with richer 3D rings
+added scroll fade-in animations for sections
