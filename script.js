@@ -1,1 +1,1 @@
-full correct script with new coordinates 42.828370, 75.302576
+full correct script.js with invalidateSize() fix for map sizing inside div
