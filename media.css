@@ -1,1 +1,73 @@
-updated mobile map height
+/* ============================================
+   RESPONSIVE STYLES - Media Queries
+   For phones, tablets and small screens
+   ============================================ */
+
+/* Mobile phones (up to 640px) */
+@media (max-width: 640px) {
+    .section-title {
+        font-size: 1.875rem;
+        line-height: 2.25rem;
+    }
+
+    .heading-serif {
+        font-size: 3.5rem;
+        line-height: 1;
+    }
+
+    #three-canvas {
+        width: 280px !important;
+        height: 280px !important;
+    }
+
+    .wedding-card {
+        padding: 1.5rem;
+    }
+
+    .timer-box {
+        padding: 1rem 0.75rem;
+    }
+
+    .countdown-number {
+        font-size: 2.5rem;
+    }
+
+    .map-container {
+        margin: 0 -0.5rem;
+    }
+
+    #map {
+        height: 260px !important;
+    }
+}
+
+/* Small tablets (641px - 768px) */
+@media (min-width: 641px) and (max-width: 768px) {
+    .section-title {
+        font-size: 2rem;
+    }
+
+    #three-canvas {
+        width: 340px !important;
+        height: 340px !important;
+    }
+}
+
+/* Large phones in landscape or small tablets */
+@media (max-width: 480px) {
+    nav .px-6 {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .heading-serif {
+        font-size: 3rem;
+    }
+}
+
+/* Subtle mobile optimizations */
+@media (max-width: 640px) {
+    .floral-bg {
+        background-image: none; /* lighter on mobile */
+    }
+}
