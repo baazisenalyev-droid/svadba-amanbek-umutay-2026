@@ -1,1 +1,223 @@
-the updated index.html with smaller map
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Приглашение на свадьбу • Аманбек &amp; Умутай • 26.07.2026</title>
+    
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+</head>
+<body class="bg-[#FDF8F3] text-[#3F2A1E] overflow-x-hidden">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-[#FDF8F3]/95 backdrop-blur-md border-b border-[#EDE4D7]">
+        <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
+            <div class="flex items-center gap-x-3">
+                <div class="w-9 h-9 rounded-full bg-[#C9A961] flex items-center justify-center">
+                    <span class="text-white text-xl">💍</span>
+                </div>
+                <div>
+                    <span class="font-semibold tracking-tight text-xl">Аманбек &amp; Умутай</span>
+                </div>
+            </div>
+            <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
+                <a href="#countdown" class="nav-link">Таймер</a>
+                <a href="#details" class="nav-link">Детали</a>
+                <a href="#map" class="nav-link">Место</a>
+            </div>
+            <a href="#map" 
+               class="px-6 py-2.5 rounded-full bg-[#C9A961] hover:bg-[#B8974F] transition-colors text-white text-sm font-semibold shadow-sm">
+                Открыть карту
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center pt-16 relative floral-bg">
+        <div class="max-w-6xl mx-auto px-6 pt-12 pb-20">
+            <div class="grid md:grid-cols-12 gap-12 items-center">
+                <!-- Text Content -->
+                <div class="md:col-span-7 text-center md:text-left">
+                    <div class="inline-flex items-center gap-x-2 px-4 py-1.5 rounded-full bg-white border border-[#EDE4D7] mb-6">
+                        <div class="w-2 h-2 bg-[#C9A961] rounded-full animate-pulse"></div>
+                        <span class="text-sm font-medium tracking-[2px] text-[#6B5B4F]">26 ИЮЛЯ 2026</span>
+                    </div>
+                    
+                    <h1 class="heading-serif text-7xl md:text-8xl leading-[0.95] tracking-tighter mb-4">
+                        Аманбек<br>&amp; Умутай
+                    </h1>
+                    
+                    <p class="text-2xl md:text-3xl text-[#6B5B4F] font-light tracking-tight mb-8">
+                        Приглашают вас разделить<br>самый важный день в нашей жизни
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row items-center gap-4 justify-center md:justify-start">
+                        <a href="#countdown" 
+                           class="group inline-flex items-center justify-center gap-x-3 px-9 py-4 rounded-2xl bg-[#3F2A1E] hover:bg-black transition-all text-white font-semibold text-lg shadow-lg active:scale-[0.985]">
+                            Узнать детали
+                            <span class="group-hover:translate-x-0.5 transition-transform">→</span>
+                        </a>
+                        <a href="#map" 
+                           class="inline-flex items-center justify-center gap-x-3 px-9 py-4 rounded-2xl border-2 border-[#C9A961] hover:bg-[#C9A961] hover:text-white transition-all font-semibold text-lg">
+                            Посмотреть на карте
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 3D Rings -->
+                <div class="md:col-span-5 flex justify-center">
+                    <div class="relative">
+                        <div class="absolute -inset-4 bg-white rounded-[3rem] shadow-2xl -z-10"></div>
+                        <canvas id="three-canvas" width="420" height="420" class="w-[320px] h-[320px] md:w-[420px] md:h-[420px]"></canvas>
+                        <div class="absolute -bottom-3 -right-3 bg-white px-5 py-2 rounded-2xl shadow border border-[#EDE4D7] text-center">
+                            <div class="text-xs tracking-[1.5px] text-[#6B5B4F]">С ЛЮБОВЬЮ</div>
+                            <div class="font-semibold text-[#C9A961]">26.07.2026</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 hidden md:block">
+            <div class="flex flex-col items-center gap-y-1 text-[#C9A961]">
+                <span class="text-xs tracking-[2px]">ПРОКРУТИТЕ</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Countdown Section -->
+    <section id="countdown" class="max-w-5xl mx-auto px-6 py-16 md:py-20">
+        <div class="text-center mb-12">
+            <div class="inline-block px-4 py-1 bg-[#C9A961]/10 text-[#C9A961] text-sm font-semibold tracking-[3px] rounded-full mb-4">ОСТАЛОСЬ ВСЕГО</div>
+            <h2 class="section-title tracking-tight">До нашей свадьбы</h2>
+            <p class="mt-3 text-[#6B5B4F] max-w-md mx-auto">Мы очень ждём этот день и надеемся, что вы разделите с нами радость</p>
+        </div>
+
+        <div class="wedding-card max-w-4xl mx-auto rounded-3xl p-8 md:p-12 border border-[#EDE4D7]">
+            <div id="countdown-timer" 
+                 class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 text-center">
+                <!-- Populated by JS -->
+            </div>
+            <div class="text-center mt-8">
+                <p class="text-sm text-[#6B5B4F]">26 июля 2026 • 16:00 • Токмок</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Details Section -->
+    <section id="details" class="max-w-5xl mx-auto px-6 py-12 md:py-16">
+        <div class="text-center mb-12">
+            <h2 class="section-title tracking-tight">Детали торжества</h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+            <!-- Time -->
+            <div class="wedding-card rounded-3xl p-8 border border-[#EDE4D7] text-center">
+                <div class="mx-auto w-16 h-16 bg-[#C9A961]/10 rounded-2xl flex items-center justify-center mb-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-9 h-9 text-[#C9A961]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M12 8v4l3 3m6-3a9 9 0 01-9 9 9 9 0 01-9-9 9 9 0 019-9 9 9 0 019 9z" />
+                    </svg>
+                </div>
+                <div class="text-sm uppercase tracking-[2px] text-[#6B5B4F] mb-1">Время начала</div>
+                <div class="text-5xl font-semibold tracking-tighter text-[#3F2A1E]">16:00</div>
+                <div class="mt-1 text-[#6B5B4F]">26 июля 2026</div>
+            </div>
+
+            <!-- Venue -->
+            <div class="wedding-card rounded-3xl p-8 border border-[#EDE4D7] text-center">
+                <div class="mx-auto w-16 h-16 bg-[#C9A961]/10 rounded-2xl flex items-center justify-center mb-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-9 h-9 text-[#C9A961]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M19 21V5a2 2 0 01-2-2H7a2 2 0 01-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                    </svg>
+                </div>
+                <div class="text-sm uppercase tracking-[2px] text-[#6B5B4F] mb-1">Место проведения</div>
+                <div class="text-3xl font-semibold tracking-tight">Ресторан<br>«Баласагын»</div>
+            </div>
+
+            <!-- Address -->
+            <div class="wedding-card rounded-3xl p-8 border border-[#EDE4D7] text-center">
+                <div class="mx-auto w-16 h-16 bg-[#C9A961]/10 rounded-2xl flex items-center justify-center mb-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-9 h-9 text-[#C9A961]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314-11.314z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                </div>
+                <div class="text-sm uppercase tracking-[2px] text-[#6B5B4F] mb-1">Адрес</div>
+                <div class="text-2xl font-semibold tracking-tight leading-tight">Шамшинская 25а<br>Токмок, Кыргызстан</div>
+                <button onclick="openGoogleMaps()" 
+                        class="mt-5 inline-flex items-center gap-x-2 text-sm font-semibold text-[#C9A961] hover:text-[#B8974F] transition-colors">
+                    <span>Открыть в Google Maps</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="mt-10 text-center">
+            <p class="romantic-text text-lg max-w-md mx-auto">
+                «В этот день мы хотим, чтобы рядом с нами были самые близкие и дорогие люди»
+            </p>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section id="map" class="max-w-5xl mx-auto px-6 pb-20">
+        <div class="text-center mb-8">
+            <h2 class="section-title tracking-tight">Место проведения</h2>
+            <p class="text-[#6B5B4F] mt-2">Нажмите на карту, чтобы приблизить, или используйте кнопку ниже</p>
+        </div>
+
+        <div class="map-container bg-white p-2 border border-[#EDE4D7]">
+            <div id="map" class="w-full h-[320px] md:h-[380px] rounded-2xl"></div>
+        </div>
+
+        <div class="flex justify-center mt-6">
+            <button onclick="openGoogleMaps()" 
+                    class="group flex items-center gap-x-3 px-8 py-3.5 bg-white hover:bg-[#C9A961] hover:text-white border border-[#C9A961] rounded-2xl font-semibold transition-all active:scale-[0.985]">
+                <span>Открыть полную карту в Google Maps</span>
+                <span class="group-hover:rotate-45 transition-transform">↗</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-[#EDE4D7] bg-white">
+        <div class="max-w-5xl mx-auto px-6 py-14 text-center">
+            <div class="flex justify-center mb-6">
+                <div class="flex items-center gap-x-1 text-4xl">
+                    <span>💍</span>
+                    <span class="text-[#C9A961]">•</span>
+                    <span>❤️</span>
+                </div>
+            </div>
+            
+            <p class="text-2xl heading-serif tracking-tight mb-2">С нетерпением ждём вас!</p>
+            <p class="text-[#6B5B4F]">Аманбек и Умутай</p>
+            
+            <div class="mt-10 text-xs text-[#6B5B4F] tracking-widest">
+                26 ИЮЛЯ 2026 • ТОКМОК • КЫРгЫЗСТАН
+            </div>
+        </div>
+    </footer>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>
