@@ -1,1 +1,128 @@
-current style.css with animations
+/* Custom styles for Amanbek & Umutay Wedding Invitation */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;500&display=swap');
+
+:root {
+    --gold: #C9A961;
+    --cream: #FDF8F3;
+    --dark: #3F2A1E;
+}
+
+body {
+    font-family: 'Inter', system_ui, sans-serif;
+}
+
+.heading-serif {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 700;
+}
+
+.gold-text {
+    color: #C9A961;
+}
+
+.section-title {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+    font-weight: 700;
+    color: #3F2A1E;
+}
+
+.wedding-card {
+    background: white;
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.06), 0 8px 10px -6px rgb(0 0 0 / 0.04);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
+    border: 1px solid #F5F0E6;
+}
+
+.wedding-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.08), 0 10px 10px -6px rgb(0 0 0 / 0.04);
+}
+
+.timer-box {
+    background: #FDF8F3;
+    border: 1px solid #EDE4D7;
+    transition: all 0.3s ease;
+}
+
+.nav-link {
+    transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+    color: #C9A961;
+}
+
+.floral-bg {
+    background-image: 
+        radial-gradient(circle at 25% 30%, rgba(201, 169, 97, 0.06) 0%, transparent 50%),
+        radial-gradient(circle at 75% 70%, rgba(201, 169, 97, 0.05) 0%, transparent 50%);
+}
+
+.map-container {
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    border: 1px solid #EDE4D7;
+}
+
+#three-canvas {
+    border-radius: 9999px;
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.15);
+    background: #FDF8F3;
+}
+
+.countdown-number {
+    font-variant-numeric: tabular-nums;
+}
+
+.romantic-text {
+    font-style: italic;
+    color: #6B5B4F;
+}
+
+/* ============================================
+   LIGHT ANIMATIONS
+   ============================================ */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.section-animate {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+.card-animate {
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                box-shadow 0.4s ease,
+                opacity 0.4s ease;
+}
+
+.timer-box {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timer-box:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+}
+
+/* Gentle entrance for countdown numbers */
+.countdown-number {
+    animation: fadeIn 0.6s ease-out;
+}
